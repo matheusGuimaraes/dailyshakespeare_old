@@ -1,0 +1,5 @@
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.Model\bin\Debug\DailyShakespeare.Model.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.Model\bin\Debug\DailyShakespeare.Model.pdb
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.Model\obj\Debug\DailyShakespeare.Model.csprojResolveAssemblyReference.cache
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.Model\obj\Debug\DailyShakespeare.Model.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.Model\obj\Debug\DailyShakespeare.Model.pdb

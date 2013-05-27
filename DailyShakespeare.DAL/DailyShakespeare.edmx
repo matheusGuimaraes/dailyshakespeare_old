@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DailyShakespeare.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DailyShakespeareStoreContainer">
+    <EntitySet Name="Monologues" EntityType="DailyShakespeare.Store.Monologues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="DailyShakespeare.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmotionalStates" EntityType="DailyShakespeare.Store.EmotionalStates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Plays" EntityType="DailyShakespeare.Store.Plays" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Characters" EntityType="DailyShakespeare.Store.Characters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MonologueEmotionalState" EntityType="DailyShakespeare.Store.MonologueEmotionalState" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="MonologuePlay" Association="DailyShakespeare.Store.MonologuePlay">
+      <End Role="Monologue" EntitySet="Monologues" />
+      <End Role="Play" EntitySet="Plays" />
+    </AssociationSet>
+    <AssociationSet Name="MonologueUser" Association="DailyShakespeare.Store.MonologueUser">
+      <End Role="Monologue" EntitySet="Monologues" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonologueEmotionalState_Monologue" Association="DailyShakespeare.Store.FK_MonologueEmotionalState_Monologue">
+      <End Role="Monologue" EntitySet="Monologues" />
+      <End Role="MonologueEmotionalState" EntitySet="MonologueEmotionalState" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonologueEmotionalState_EmotionalState" Association="DailyShakespeare.Store.FK_MonologueEmotionalState_EmotionalState">
+      <End Role="EmotionalState" EntitySet="EmotionalStates" />
+      <End Role="MonologueEmotionalState" EntitySet="MonologueEmotionalState" />
+    </AssociationSet>
+    <AssociationSet Name="PlayCharacter" Association="DailyShakespeare.Store.PlayCharacter">
+      <End Role="Character" EntitySet="Characters" />
+      <End Role="Play" EntitySet="Plays" />
+    </AssociationSet>
+    <AssociationSet Name="MonologueCharacter" Association="DailyShakespeare.Store.MonologueCharacter">
+      <End Role="Monologue" EntitySet="Monologues" />
+      <End Role="Character" EntitySet="Characters" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Monologues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Play_Id" Type="int" Nullable="false" />
+    <Property Name="LastUpdatedBy_Id" Type="int" Nullable="false" />
+    <Property Name="Character_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MonologueId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmotionalStates">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Plays">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Year" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Characters">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Play_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MonologueEmotionalState">
+    <Key>
+      <PropertyRef Name="Monologues_Id" />
+      <PropertyRef Name="EmotionalStates_Id" />
+    </Key>
+    <Property Name="Monologues_Id" Type="int" Nullable="false" />
+    <Property Name="EmotionalStates_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="MonologuePlay">
+    <End Role="Monologue" Type="DailyShakespeare.Store.Monologues" Multiplicity="*" />
+    <End Role="Play" Type="DailyShakespeare.Store.Plays" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Play">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Monologue">
+        <PropertyRef Name="Play_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MonologueUser">
+    <End Role="Monologue" Type="DailyShakespeare.Store.Monologues" Multiplicity="*" />
+    <End Role="User" Type="DailyShakespeare.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Monologue">
+        <PropertyRef Name="LastUpdatedBy_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PlayCharacter">
+    <End Role="Character" Type="DailyShakespeare.Store.Characters" Multiplicity="*" />
+    <End Role="Play" Type="DailyShakespeare.Store.Plays" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Play">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Character">
+        <PropertyRef Name="Play_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MonologueCharacter">
+    <End Role="Monologue" Type="DailyShakespeare.Store.Monologues" Multiplicity="*" />
+    <End Role="Character" Type="DailyShakespeare.Store.Characters" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Character">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Monologue">
+        <PropertyRef Name="Character_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonologueEmotionalState_Monologue">
+    <End Role="Monologue" Type="DailyShakespeare.Store.Monologues" Multiplicity="1" />
+    <End Role="MonologueEmotionalState" Type="DailyShakespeare.Store.MonologueEmotionalState" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Monologue">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MonologueEmotionalState">
+        <PropertyRef Name="Monologues_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonologueEmotionalState_EmotionalState">
+    <End Role="MonologueEmotionalState" Type="DailyShakespeare.Store.MonologueEmotionalState" Multiplicity="*" />
+    <End Role="EmotionalState" Type="DailyShakespeare.Store.EmotionalStates" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="EmotionalState">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MonologueEmotionalState">
+        <PropertyRef Name="EmotionalStates_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DailyShakespeare" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DailyShakespeareContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Monologues" EntityType="DailyShakespeare.Monologue" />
+          <EntitySet Name="Users" EntityType="DailyShakespeare.User" />
+          <EntitySet Name="EmotionalStates" EntityType="DailyShakespeare.EmotionalState" />
+          <EntitySet Name="Plays" EntityType="DailyShakespeare.Play" />
+          <AssociationSet Name="MonologuePlay" Association="DailyShakespeare.MonologuePlay">
+            <End Role="Monologue" EntitySet="Monologues" />
+            <End Role="Play" EntitySet="Plays" />
+          </AssociationSet>
+          <AssociationSet Name="MonologueUser" Association="DailyShakespeare.MonologueUser">
+            <End Role="Monologue" EntitySet="Monologues" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="MonologueEmotionalState" Association="DailyShakespeare.MonologueEmotionalState">
+            <End Role="Monologue" EntitySet="Monologues" />
+            <End Role="EmotionalState" EntitySet="EmotionalStates" />
+          </AssociationSet>
+          <EntitySet Name="Characters" EntityType="DailyShakespeare.Character" />
+          <AssociationSet Name="PlayCharacter" Association="DailyShakespeare.PlayCharacter">
+            <End Role="Character" EntitySet="Characters" />
+            <End Role="Play" EntitySet="Plays" />
+          </AssociationSet>
+          <AssociationSet Name="MonologueCharacter" Association="DailyShakespeare.MonologueCharacter">
+            <End Role="Monologue" EntitySet="Monologues" />
+            <End Role="Character" EntitySet="Characters" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Monologue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Content" Nullable="false" />
+          <NavigationProperty Name="Play" Relationship="DailyShakespeare.MonologuePlay" FromRole="Monologue" ToRole="Play" />
+          <NavigationProperty Name="LastUpdatedBy" Relationship="DailyShakespeare.MonologueUser" FromRole="Monologue" ToRole="User" />
+          <NavigationProperty Name="EmotionalStates" Relationship="DailyShakespeare.MonologueEmotionalState" FromRole="Monologue" ToRole="EmotionalState" />
+          <NavigationProperty Name="Character" Relationship="DailyShakespeare.MonologueCharacter" FromRole="Monologue" ToRole="Character" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MonologueId" Nullable="false" />
+          <NavigationProperty Name="Monologues" Relationship="DailyShakespeare.MonologueUser" FromRole="User" ToRole="Monologue" />
+        </EntityType>
+        <EntityType Name="EmotionalState">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Monologues" Relationship="DailyShakespeare.MonologueEmotionalState" FromRole="EmotionalState" ToRole="Monologue" />
+        </EntityType>
+        <EntityType Name="Play">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Monologues" Relationship="DailyShakespeare.MonologuePlay" FromRole="Play" ToRole="Monologue" />
+          <NavigationProperty Name="Characters" Relationship="DailyShakespeare.PlayCharacter" FromRole="Play" ToRole="Character" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="Int32" Name="Year" />
+        </EntityType>
+        <Association Name="MonologuePlay">
+          <End Type="DailyShakespeare.Monologue" Role="Monologue" Multiplicity="*" />
+          <End Type="DailyShakespeare.Play" Role="Play" Multiplicity="1" />
+        </Association>
+        <Association Name="MonologueUser">
+          <End Type="DailyShakespeare.Monologue" Role="Monologue" Multiplicity="*" />
+          <End Type="DailyShakespeare.User" Role="User" Multiplicity="1" />
+        </Association>
+        <Association Name="MonologueEmotionalState">
+          <End Type="DailyShakespeare.Monologue" Role="Monologue" Multiplicity="*" />
+          <End Type="DailyShakespeare.EmotionalState" Role="EmotionalState" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Character">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Play" Relationship="DailyShakespeare.PlayCharacter" FromRole="Character" ToRole="Play" />
+          <NavigationProperty Name="Monologues" Relationship="DailyShakespeare.MonologueCharacter" FromRole="Character" ToRole="Monologue" />
+        </EntityType>
+        <Association Name="PlayCharacter">
+          <End Type="DailyShakespeare.Character" Role="Character" Multiplicity="*" />
+          <End Type="DailyShakespeare.Play" Role="Play" Multiplicity="1" />
+        </Association>
+        <Association Name="MonologueCharacter">
+          <End Type="DailyShakespeare.Monologue" Role="Monologue" Multiplicity="*" />
+          <End Type="DailyShakespeare.Character" Role="Character" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DailyShakespeareStoreContainer" CdmEntityContainer="DailyShakespeareContainer">
+    <EntitySetMapping Name="Monologues">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.Monologue)">
+        <MappingFragment StoreEntitySet="Monologues">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MonologueId" ColumnName="MonologueId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmotionalStates">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.EmotionalState)">
+        <MappingFragment StoreEntitySet="EmotionalStates">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plays">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.Play)">
+        <MappingFragment StoreEntitySet="Plays">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Characters">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.Character)">
+        <MappingFragment StoreEntitySet="Characters">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MonologuePlay" TypeName="DailyShakespeare.MonologuePlay" StoreEntitySet="Monologues">
+      <EndProperty Name="Play">
+        <ScalarProperty Name="Id" ColumnName="Play_Id" />
+      </EndProperty>
+      <EndProperty Name="Monologue">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MonologueUser" TypeName="DailyShakespeare.MonologueUser" StoreEntitySet="Monologues">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="LastUpdatedBy_Id" />
+      </EndProperty>
+      <EndProperty Name="Monologue">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MonologueEmotionalState" TypeName="DailyShakespeare.MonologueEmotionalState" StoreEntitySet="MonologueEmotionalState">
+      <EndProperty Name="Monologue">
+        <ScalarProperty Name="Id" ColumnName="Monologues_Id" />
+      </EndProperty>
+      <EndProperty Name="EmotionalState">
+        <ScalarProperty Name="Id" ColumnName="EmotionalStates_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PlayCharacter" TypeName="DailyShakespeare.PlayCharacter" StoreEntitySet="Characters">
+      <EndProperty Name="Play">
+        <ScalarProperty Name="Id" ColumnName="Play_Id" />
+      </EndProperty>
+      <EndProperty Name="Character">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MonologueCharacter" TypeName="DailyShakespeare.MonologueCharacter" StoreEntitySet="Monologues">
+      <EndProperty Name="Character">
+        <ScalarProperty Name="Id" ColumnName="Character_Id" />
+      </EndProperty>
+      <EndProperty Name="Monologue">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
