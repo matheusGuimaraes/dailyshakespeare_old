@@ -7,14 +7,17 @@ namespace DailyShakespeare.DAL
 {
     public class DataManager : IDataManager
     {
-        public List<Play>  GetPlays()
+        public List<Model.Play>  GetPlays()
         {
-            List<Play> plays;
+            List<Model.Play> plays;
 
             using(var context = new DailyShakespeareContainer())
             {
-                plays = context.Plays.ToList();
                 
+                var playsDb = context.Plays;
+
+                plays = playsDb.Select(p => new Model.Play() {Id = p.Id, Name = p.Name, Year = p.Year}).ToList();
+
             }
 
             return plays;

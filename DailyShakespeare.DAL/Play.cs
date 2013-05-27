@@ -22,7 +22,7 @@ namespace DailyShakespeare.DAL
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> Year { get; set; }
+        public int Year { get; set; }
     
         public virtual ICollection<Monologue> Monologues { get; set; }
         public virtual ICollection<Character> Characters { get; set; }

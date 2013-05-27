@@ -61,7 +61,7 @@
     <NavigationProperty Name="Monologues" Relationship="DailyShakespeare.MonologuePlay" FromRole="Play" ToRole="Monologue" />
     <NavigationProperty Name="Characters" Relationship="DailyShakespeare.PlayCharacter" FromRole="Play" ToRole="Character" />
     <Property Type="String" Name="Name" Nullable="false" />
-    <Property Type="Int32" Name="Year" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
   </EntityType>
   <Association Name="MonologuePlay">
     <End Type="DailyShakespeare.Monologue" Role="Monologue" Multiplicity="*" />

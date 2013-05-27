@@ -1,0 +1,15 @@
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\DailyShakespeare.DataService.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\DailyShakespeare.DataService.pdb
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\DailyShakespeare.DAL.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\DailyShakespeare.Model.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\EntityFramework.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\Microsoft.WindowsAzure.Configuration.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\Microsoft.WindowsAzure.Diagnostics.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\Microsoft.WindowsAzure.StorageClient.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\DailyShakespeare.DAL.pdb
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\DailyShakespeare.Model.pdb
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\EntityFramework.xml
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\bin\Microsoft.WindowsAzure.Diagnostics.xml
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\obj\Debug\DailyShakespeare.DataService.csprojResolveAssemblyReference.cache
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\obj\Debug\DailyShakespeare.DataService.dll
+H:\DEV\DailyShakespeare\DailyShakespeare\DailyShakespeare.DataService\obj\Debug\DailyShakespeare.DataService.pdb
