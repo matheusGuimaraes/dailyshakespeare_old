@@ -1,0 +1,3 @@
+_ReSharper.DailyShakespeare/
+bin/
+obj/
