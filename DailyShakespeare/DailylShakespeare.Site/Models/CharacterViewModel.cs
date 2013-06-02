@@ -15,8 +15,14 @@ namespace DailylShakespeare.Site.Models
         [Required]
         public int PlayId { get; set; }
 
-                [Required]
+        [Required]
         public int GenderId { get; set; }
+
+        public int SelectedCharacterId { get; set; }
+
+        [DisplayName("Bio* :")]
+        [Required]
+        public string Bio { get; set; }
 
         [DisplayName("Gender* :")]
         public List<Gender> Genders { get; set; }
@@ -24,6 +30,8 @@ namespace DailylShakespeare.Site.Models
         [DisplayName("Play* :")]
         public List<Play> Plays { get; set; }
 
+        [DisplayName("Name:")]
+        public List<Character> Characters { get; set; }
 
     }
 
@@ -36,6 +44,7 @@ namespace DailylShakespeare.Site.Models
             dto.Name = model.Name;
             dto.PlayId = model.PlayId;
             dto.GenderId = model.GenderId;
+            dto.Bio = model.Bio;
 
             return dto;
 

@@ -98,6 +98,7 @@
     <NavigationProperty Name="Monologues" Relationship="DailyShakespeare.MonologueCharacter" FromRole="Character" ToRole="Monologue" />
     <NavigationProperty Name="Gender" Relationship="DailyShakespeare.GenderCharacter" FromRole="Character" ToRole="Gender" />
     <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Bio" Nullable="false" />
   </EntityType>
   <Association Name="PlayCharacter">
     <End Type="DailyShakespeare.Character" Role="Character" Multiplicity="*" />

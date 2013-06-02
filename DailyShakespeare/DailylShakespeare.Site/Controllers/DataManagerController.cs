@@ -39,16 +39,31 @@ namespace DailylShakespeare.Site.Controllers
             }
             
         }
+
+        private List<Character> Characters
+        {
+            get
+            {
+                if (Session["Characters"] == null)
+                {
+                    Session["Characters"] = _service.GetCharacters();
+                }
+
+                return (List<Character>)Session["Characters"];
+            }
+
+        }
+
         public DataManagerController()
         {
             _service = new DailyShakespeareService();
 
 
         }
-        public ActionResult Characters()
+        public ActionResult ManageCharacters()
         {
 
-            return View(new CharacterViewModel() { Plays = Plays, Genders = Genders});
+            return View(new CharacterViewModel() { Plays = Plays, Genders = Genders, Characters = Characters});
         }
 
         public ActionResult SaveCharacter(CharacterViewModel model)
@@ -59,8 +74,18 @@ namespace DailylShakespeare.Site.Controllers
             }
 
             model.Plays = Plays;
-            model.Genders = Genders; 
+            model.Genders = Genders;
+            model.Characters = Characters;
             return View("Characters",model);
+        }
+
+        public ActionResult LoadCharacter(CharacterViewModel model)
+        {
+
+            model.Characters = Characters;
+            model.Plays = Plays;
+            model.Genders = Genders;
+            return View("Characters", model);
         }
 
         public ActionResult Monologues()

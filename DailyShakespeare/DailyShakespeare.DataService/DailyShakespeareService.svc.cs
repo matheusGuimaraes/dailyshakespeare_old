@@ -25,6 +25,11 @@ namespace DailyShakespeare.DataService
             return _dataManager.GetGenders();
         }
 
+        public List<Character> GetCharacters()
+        {
+            return _dataManager.GetCharacters();
+        }
+
         public void SaveCharacter(CharacterDto characterDto)
         {
             var character = new Character();
@@ -32,7 +37,7 @@ namespace DailyShakespeare.DataService
             character.Name = characterDto.Name;
             character.Play = GetPlays().First(x => x.Id == characterDto.PlayId);
             character.Gender = GetGenders().First(x => x.Id == characterDto.GenderId);
-
+            character.Bio = characterDto.Bio;
             _dataManager.SaveCharacter(character);
         }
     }

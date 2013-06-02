@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/02/2013 02:34:04
+-- Date Created: 06/02/2013 12:45:27
 -- Generated from EDMX file: H:\DEV\DailyShakespeare\DailyShakespeare.DAL\DailyShakespeare.edmx
 -- --------------------------------------------------
 
@@ -38,8 +38,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_GenderCharacter]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Character] DROP CONSTRAINT [FK_GenderCharacter];
 GO
-IF OBJECT_ID(N'[dbo].[FK_UserUserType]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[User] DROP CONSTRAINT [FK_UserUserType];
+IF OBJECT_ID(N'[dbo].[FK_UserTypeUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[User] DROP CONSTRAINT [FK_UserTypeUser];
 GO
 
 -- --------------------------------------------------
@@ -114,6 +114,7 @@ GO
 CREATE TABLE [dbo].[Character] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
+    [Bio] nvarchar(max)  NOT NULL,
     [Play_Id] int  NOT NULL,
     [Gender_Id] int  NOT NULL
 );

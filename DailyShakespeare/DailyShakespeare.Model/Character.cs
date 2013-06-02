@@ -8,7 +8,7 @@ namespace DailyShakespeare.Model
         public string Name { get; set; }
         public Play Play { get; set; }
         public Gender Gender { get; set; }
-
+        public string Bio { get; set; }
         public List<Monologue> Monologues { get; set; }
     }
 }

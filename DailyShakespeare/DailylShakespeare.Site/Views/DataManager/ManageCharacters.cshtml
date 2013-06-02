@@ -1,0 +1,37 @@
+﻿@model DailylShakespeare.Site.Models.CharacterViewModel
+
+<table>
+    
+<tr>
+    <td>
+        
+        <form action="LoadCharacter">
+            <h2>Select a character to edit or add a new one using the panel on the side</h2>
+            @Html.DropDownListFor(x => x.SelectedCharacterId, new SelectList(Model.Characters, "Id", "Name"))
+            <input type="submit" value="Load"/>
+        </form>
+
+    </td>
+    <td>
+        <form action="SaveCharacter">
+    <fieldset>
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name)
+        @Html.LabelFor(m => m.Plays)
+        @Html.DropDownListFor(x => x.PlayId,  new SelectList(Model.Plays, "Id", "Name"))
+        @Html.LabelFor(m => m.Genders)
+        @Html.DropDownListFor(x => x.GenderId, new SelectList(Model.Genders, "Id", "Description"))
+        @Html.LabelFor(m => m.Bio)
+        @Html.TextAreaFor(x => x.Bio)
+        <p>
+            <input type="submit" value="Save"/>
+        </p>
+    </fieldset>
+</form>
+
+    </td>
+
+</tr>
+
+</table>
+  

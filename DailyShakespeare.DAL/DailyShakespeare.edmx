@@ -88,6 +88,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Bio" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Play_Id" Type="int" Nullable="false" />
     <Property Name="Gender_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -311,6 +312,7 @@
           <NavigationProperty Name="Monologues" Relationship="DailyShakespeare.MonologueCharacter" FromRole="Character" ToRole="Monologue" />
           <NavigationProperty Name="Gender" Relationship="DailyShakespeare.GenderCharacter" FromRole="Character" ToRole="Gender" />
           <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Bio" Nullable="false" />
         </EntityType>
         <Association Name="PlayCharacter">
           <End Type="DailyShakespeare.Character" Role="Character" Multiplicity="*" />
@@ -390,6 +392,7 @@
         <MappingFragment StoreEntitySet="Character">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Bio" ColumnName="Bio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

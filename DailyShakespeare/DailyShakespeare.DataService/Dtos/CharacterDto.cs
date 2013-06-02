@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public int PlayId { get; set; }
         public int GenderId { get; set; }
+        public string Bio { get; set; }
     }
 }

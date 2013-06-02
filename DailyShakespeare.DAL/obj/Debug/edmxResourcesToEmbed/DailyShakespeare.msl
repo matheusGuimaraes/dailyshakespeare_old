@@ -41,6 +41,7 @@
         <MappingFragment StoreEntitySet="Character">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Bio" ColumnName="Bio" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

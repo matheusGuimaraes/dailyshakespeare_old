@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using DailyShakespeare.Model;
 
@@ -15,7 +16,7 @@ namespace DailyShakespeare.DAL
             using (var context = new DailyShakespeareContext())
             {
                 
-                plays = context.Plays.ToList();
+                plays = context.Plays.OrderBy(x => x.Name).ToList();
 
             }
 
@@ -41,7 +42,7 @@ namespace DailyShakespeare.DAL
 
             using (var context = new DailyShakespeareContext())
             {
-                characters = context.Characters.ToList();
+                characters = context.Characters.OrderBy(x => x.Name).ToList();
 
             }
 
@@ -82,7 +83,8 @@ namespace DailyShakespeare.DAL
             using (var context = new DailyShakespeareContext())
             {
                 context.Characters.AddObject(character);
-
+                context.ObjectStateManager.ChangeObjectState(character.Play, EntityState.Unchanged);
+                context.ObjectStateManager.ChangeObjectState(character.Gender, EntityState.Unchanged);
                 context.SaveChanges();
             }
         }

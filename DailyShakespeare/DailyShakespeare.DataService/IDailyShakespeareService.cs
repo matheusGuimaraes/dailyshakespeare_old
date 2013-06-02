@@ -16,6 +16,9 @@ namespace DailyShakespeare.DataService
         List<Gender> GetGenders();
 
         [OperationContract]
+        List<Character> GetCharacters();
+
+        [OperationContract]
         void SaveCharacter(CharacterDto character);
 
     }
