@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DailyShakespeare.Model
 {
@@ -10,7 +6,9 @@ namespace DailyShakespeare.Model
     {
         public int Id { get; set; }
         public string Content { get; set; }
-
+        public User LastUpdatedBy { get; set; }
+        public List<EmotionalState> EmotionalStates { get; set; }
+        public Character Character { get; set; }
         public Play Play { get; set; }
 
         

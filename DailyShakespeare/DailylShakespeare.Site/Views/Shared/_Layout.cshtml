@@ -12,13 +12,14 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <p class="site-title">
-                    <a href="~/">ASP.NET Web API</a></p>
+                    <a href="~/">Daily Shakespeare Admin</a></p>
             </div>
             <div class="float-right">
                 <nav>
                     <ul id="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Manage Monologues", "Monologues", "DataManager", new { area = "" }, null)</li>
+                        <li>@Html.ActionLink("Manage Characters", "Characters", "DataManager", new { area = "" }, null)</li>
                     </ul>
                 </nav>
             </div>

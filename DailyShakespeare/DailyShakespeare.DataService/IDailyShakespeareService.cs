@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
+using DailyShakespeare.DataService.Dtos;
 using DailyShakespeare.Model;
 
 namespace DailyShakespeare.DataService
@@ -14,7 +10,13 @@ namespace DailyShakespeare.DataService
     {
 
         [OperationContract]
-        List<Play> GetPlays(int value);
+        List<Play> GetPlays();
+
+        [OperationContract]
+        List<Gender> GetGenders();
+
+        [OperationContract]
+        void SaveCharacter(CharacterDto character);
 
     }
 

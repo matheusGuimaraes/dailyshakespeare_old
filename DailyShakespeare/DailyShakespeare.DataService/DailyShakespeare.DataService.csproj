@@ -85,6 +85,7 @@
     <Compile Include="DailyShakespeareService.svc.cs">
       <DependentUpon>DailyShakespeareService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Dtos\CharacterDto.cs" />
     <Compile Include="IDailyShakespeareService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRole.cs" />
@@ -96,7 +97,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">

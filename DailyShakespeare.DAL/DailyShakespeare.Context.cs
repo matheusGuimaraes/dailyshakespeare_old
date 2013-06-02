@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using DailyShakespeare.Model;
+
 namespace DailyShakespeare.DAL
 {
     using System;
@@ -25,10 +27,12 @@ namespace DailyShakespeare.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Monologue> Monologues { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<EmotionalState> EmotionalStates { get; set; }
-        public DbSet<Play> Plays { get; set; }
-        public DbSet<Character> Characters { get; set; }
+        public DbSet<Monologue> Monologue { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<EmotionalState> EmotionalState { get; set; }
+        public DbSet<Play> Play { get; set; }
+        public DbSet<Character> Character { get; set; }
+        public DbSet<Gender> Gender { get; set; }
+        public DbSet<UserType> UserType { get; set; }
     }
 }

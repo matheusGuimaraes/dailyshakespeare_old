@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DailyShakespeare.Model;
 using NUnit.Framework;
 
 namespace DailyShakespeare.DAL.Tests
@@ -31,7 +32,7 @@ namespace DailyShakespeare.DAL.Tests
         [Test]
         public void Should_update_a_play()
         {
-            var play = new Model.Play();
+            var play = new Play();
             var p = _dataManager.GetPlays().FirstOrDefault(x => x.Id == 1);
 
             play.Id = p.Id;
@@ -45,5 +46,43 @@ namespace DailyShakespeare.DAL.Tests
             Assert.IsNotNull(result);
             Assert.AreEqual(2013, result.Year);
         }
+
+        [Test]
+        public void Should_create_a_character()
+        {
+            var character = new Character();
+            var play = _dataManager.GetPlays().FirstOrDefault(x => x.Id == 1);
+            var gender = _dataManager.GetGenders().FirstOrDefault(x => x.Id == 1);
+
+            character.Play = play;
+            character.Gender = gender;
+            character.Name = "Prospero";
+
+            _dataManager.SaveCharacter(character);
+
+            var chars = _dataManager.GetCharacters();
+
+            Assert.IsNotNull(chars);
+            Assert.AreEqual(1, chars.Count);
+
+        }
+
+        //[Test]
+        //public void Should_update_a_character()
+        //{
+        //    var play = new Character();
+        //    var p = _dataManager.GetCharacters().FirstOrDefault(x => x.Id == 1);
+
+        //    play.Id = p.Id;
+        //    play.Name = p.Name;
+        //    play.Year = 2013;
+
+        //    _dataManager.UpdatePlay(play);
+
+        //    var result = _dataManager.GetPlays().FirstOrDefault(x => x.Id == 1);
+
+        //    Assert.IsNotNull(result);
+        //    Assert.AreEqual(2013, result.Year);
+        //}
     }
 }

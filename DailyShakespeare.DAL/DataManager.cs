@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DailyShakespeare.Model;
 
 
 namespace DailyShakespeare.DAL
 {
     public class DataManager : IDataManager
     {
-        public List<Model.Play>  GetPlays()
+        public List<Play>  GetPlays()
         {
-            List<Model.Play> plays;
+            List<Play> plays;
 
-            using(var context = new DailyShakespeareContainer())
+            using (var context = new DailyShakespeareContext())
             {
                 
-                var playsDb = context.Plays;
-
-                plays = playsDb.Select(p => new Model.Play() {Id = p.Id, Name = p.Name, Year = p.Year}).ToList();
+                plays = context.Plays.ToList();
 
             }
 
@@ -27,7 +26,7 @@ namespace DailyShakespeare.DAL
         {
             List<Monologue> monologues;
 
-            using (var context = new DailyShakespeareContainer())
+            using (var context = new DailyShakespeareContext())
             {
                 monologues = context.Monologues.ToList();
 
@@ -40,7 +39,7 @@ namespace DailyShakespeare.DAL
         {
             List<Character> characters;
 
-            using (var context = new DailyShakespeareContainer())
+            using (var context = new DailyShakespeareContext())
             {
                 characters = context.Characters.ToList();
 
@@ -49,9 +48,22 @@ namespace DailyShakespeare.DAL
             return characters;
         }
 
-        public void UpdatePlay(Model.Play play)
+        public List<Gender> GetGenders()
         {
-            using (var context = new DailyShakespeareContainer())
+            List<Gender> genders;
+
+            using (var context = new DailyShakespeareContext())
+            {
+                genders = context.Genders.ToList();
+
+            }
+
+            return genders;
+        }
+
+        public void UpdatePlay(Play play)
+        {
+            using (var context = new DailyShakespeareContext())
             {
                 var playDb = context.Plays.FirstOrDefault(p => p.Id == play.Id);
 
@@ -60,6 +72,16 @@ namespace DailyShakespeare.DAL
 
                 playDb.Name = play.Name;
                 playDb.Year = play.Year;
+
+                context.SaveChanges();
+            }
+        }
+
+        public void SaveCharacter(Character character)
+        {
+            using (var context = new DailyShakespeareContext())
+            {
+                context.Characters.AddObject(character);
 
                 context.SaveChanges();
             }

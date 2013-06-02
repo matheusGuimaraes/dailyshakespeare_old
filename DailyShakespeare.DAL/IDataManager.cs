@@ -1,12 +1,15 @@
 using System.Collections.Generic;
+using DailyShakespeare.Model;
 
 namespace DailyShakespeare.DAL
 {
     public interface IDataManager
     {
-        List<Model.Play> GetPlays();
+        List<Play> GetPlays();
         List<Monologue> GetMonologues();
-        List<Character> GetCharacters(); 
-        void UpdatePlay(Model.Play play);
+        List<Character> GetCharacters();
+        List<Gender> GetGenders();
+        void UpdatePlay(Play play);
+        void SaveCharacter(Character character);
     }
 }

@@ -1,21 +1,65 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Views/d:Home/f:Index.cshtml" caret="0" fromTop="0" />
-    <File id="A6F5FCC4-F448-4060-AFFC-22E8699DC760/f:DailyShakespeareContainerTests.cs" caret="900" fromTop="13" />
-    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:IDataManager.cs" caret="133" fromTop="6" />
-    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DataManager.cs" caret="204" fromTop="5" />
-    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:WebRole.cs" caret="0" fromTop="0" />
-    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Play.cs" caret="124" fromTop="6" />
-    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:IDailyShakespeareService.cs" caret="261" fromTop="10" />
-    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:DailyShakespeareService.svc.cs" caret="670" fromTop="26" />
-    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:Web.config" caret="2869" fromTop="24" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DailyShakespeare.Designer.cs" caret="0" fromTop="0" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/d:Database/f:Plays.sql" caret="4791" fromTop="27" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Character.cs" caret="336" fromTop="12" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Monologue.cs" caret="419" fromTop="16" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Gender.cs" caret="127" fromTop="6" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:EmotionalState.cs" caret="243" fromTop="9" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/d:Database/f:EmotionalStates.sql" caret="353" fromTop="22" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DailyShakespeare.edmx.sql" caret="9570" fromTop="33" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:User.cs" caret="373" fromTop="12" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:UserType.cs" caret="241" fromTop="9" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Play.cs" caret="459" fromTop="16" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Views/d:DataManager/f:Monologues.cshtml" caret="0" fromTop="0" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Controllers/f:AdminController.cs" caret="0" fromTop="0" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Views/d:Shared/f:_Layout.cshtml" caret="889" fromTop="21" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Views/d:Home/f:Index.cshtml" caret="319" fromTop="7" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/d:Database/f:Genders.sql" caret="327" fromTop="22" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:App.Config" caret="643" fromTop="9" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/f:Web.config" caret="1710" fromTop="22" />
+    <File id="A6F5FCC4-F448-4060-AFFC-22E8699DC760/f:App.config" caret="507" fromTop="3" />
+    <File id="A6F5FCC4-F448-4060-AFFC-22E8699DC760/f:DailyShakespeareContainerTests.cs" caret="1845" fromTop="22" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:IDataManager.cs" caret="380" fromTop="12" />
+    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:DailyShakespeareService.svc.cs" caret="592" fromTop="15" />
+    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/d:Dtos/f:CharacterDto.cs" caret="233" fromTop="7" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Views/d:DataManager/f:Characters.cshtml" caret="104" fromTop="3" />
+    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:IDailyShakespeareService.cs" caret="458" fromTop="18" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Models/f:CharacterViewModel.cs" caret="380" fromTop="14" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DailyShakespeareContext.cs" caret="107" fromTop="5" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Controllers/f:DataManagerController.cs" caret="1413" fromTop="16" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DailyShakespeare.Context.cs" caret="918" fromTop="17" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DataManager.cs" caret="1959" fromTop="15" />
   </RecentFiles>
   <RecentEdits>
-    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:IDataManager.cs" caret="133" fromTop="6" />
-    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DataManager.cs" caret="240" fromTop="7" />
-    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:DailyShakespeareService.svc.cs" caret="317" fromTop="11" />
-    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Play.cs" caret="124" fromTop="6" />
-    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:IDailyShakespeareService.cs" caret="261" fromTop="10" />
     <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:Web.config" caret="2854" fromTop="23" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Views/d:Home/f:Index.cshtml" caret="167" fromTop="4" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Views/d:Shared/f:_Layout.cshtml" caret="889" fromTop="21" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DailyShakespeare.Designer.cs" caret="82" fromTop="1" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/f:Web.config" caret="1315" fromTop="22" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DailyShakespeare.edmx.sql" caret="0" fromTop="0" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/d:Database/f:EmotionalStates.sql" caret="276" fromTop="15" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/d:Database/f:Plays.sql" caret="41" fromTop="3" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Play.cs" caret="445" fromTop="16" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Character.cs" caret="315" fromTop="11" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Monologue.cs" caret="341" fromTop="10" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:Gender.cs" caret="127" fromTop="6" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:UserType.cs" caret="129" fromTop="6" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:EmotionalState.cs" caret="243" fromTop="9" />
+    <File id="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E/f:User.cs" caret="396" fromTop="12" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/d:Database/f:Genders.sql" caret="0" fromTop="0" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:IDataManager.cs" caret="380" fromTop="12" />
+    <File id="A6F5FCC4-F448-4060-AFFC-22E8699DC760/f:DailyShakespeareContainerTests.cs" caret="1969" fromTop="35" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:App.Config" caret="643" fromTop="9" />
+    <File id="A6F5FCC4-F448-4060-AFFC-22E8699DC760/f:App.config" caret="507" fromTop="3" />
+    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/d:Dtos/f:CharacterDto.cs" caret="233" fromTop="7" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Views/d:DataManager/f:Characters.cshtml" caret="395" fromTop="9" />
+    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:IDailyShakespeareService.cs" caret="458" fromTop="18" />
+    <File id="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135/f:DailyShakespeareService.svc.cs" caret="1090" fromTop="34" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Controllers/f:DataManagerController.cs" caret="1150" fromTop="23" />
+    <File id="5B622D20-DC93-4A5B-AD47-864E975561E0/d:Models/f:CharacterViewModel.cs" caret="380" fromTop="14" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DailyShakespeareContext.cs" caret="107" fromTop="5" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DailyShakespeare.Context.cs" caret="991" fromTop="20" />
+    <File id="49F60956-0472-44C5-ADA7-51108E265857/f:DataManager.cs" caret="2095" fromTop="18" />
   </RecentEdits>
 </RecentFiles>

@@ -1,0 +1,13 @@
+﻿@model DailylShakespeare.Site.Models.CharacterViewModel
+
+<form action="SaveCharacter">
+    <fieldset>
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name)
+        @Html.LabelFor(m => m.Plays)
+        @Html.DropDownListFor(x => x.PlayId,  new SelectList(Model.Plays, "Id", "Name"))
+        @Html.LabelFor(m => m.Genders)
+        @Html.DropDownListFor(x => x.GenderId, new SelectList(Model.Genders, "Id", "Description"))
+        <input type="submit" value="Save"/>
+    </fieldset>
+</form>

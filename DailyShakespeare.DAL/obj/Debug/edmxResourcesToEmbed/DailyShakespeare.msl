@@ -1,46 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DailyShakespeareStoreContainer" CdmEntityContainer="DailyShakespeareContainer">
-    <EntitySetMapping Name="Monologues">
+    <EntitySetMapping Name="Monologue">
       <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.Monologue)">
-        <MappingFragment StoreEntitySet="Monologues">
+        <MappingFragment StoreEntitySet="Monologue">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Content" ColumnName="Content" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
+    <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.User)">
-        <MappingFragment StoreEntitySet="Users">
+        <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="MonologueId" ColumnName="MonologueId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EmotionalStates">
+    <EntitySetMapping Name="EmotionalState">
       <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.EmotionalState)">
-        <MappingFragment StoreEntitySet="EmotionalStates">
+        <MappingFragment StoreEntitySet="EmotionalState">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Plays">
+    <EntitySetMapping Name="Play">
       <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.Play)">
-        <MappingFragment StoreEntitySet="Plays">
+        <MappingFragment StoreEntitySet="Play">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Year" ColumnName="Year" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Characters">
+    <EntitySetMapping Name="Character">
       <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.Character)">
-        <MappingFragment StoreEntitySet="Characters">
+        <MappingFragment StoreEntitySet="Character">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="MonologuePlay" TypeName="DailyShakespeare.MonologuePlay" StoreEntitySet="Monologues">
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.Gender)">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserType">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.UserType)">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MonologuePlay" TypeName="DailyShakespeare.MonologuePlay" StoreEntitySet="Monologue">
       <EndProperty Name="Play">
         <ScalarProperty Name="Id" ColumnName="Play_Id" />
       </EndProperty>
@@ -48,7 +68,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="MonologueUser" TypeName="DailyShakespeare.MonologueUser" StoreEntitySet="Monologues">
+    <AssociationSetMapping Name="MonologueUser" TypeName="DailyShakespeare.MonologueUser" StoreEntitySet="Monologue">
       <EndProperty Name="User">
         <ScalarProperty Name="Id" ColumnName="LastUpdatedBy_Id" />
       </EndProperty>
@@ -64,7 +84,7 @@
         <ScalarProperty Name="Id" ColumnName="EmotionalStates_Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="PlayCharacter" TypeName="DailyShakespeare.PlayCharacter" StoreEntitySet="Characters">
+    <AssociationSetMapping Name="PlayCharacter" TypeName="DailyShakespeare.PlayCharacter" StoreEntitySet="Character">
       <EndProperty Name="Play">
         <ScalarProperty Name="Id" ColumnName="Play_Id" />
       </EndProperty>
@@ -72,11 +92,27 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="MonologueCharacter" TypeName="DailyShakespeare.MonologueCharacter" StoreEntitySet="Monologues">
+    <AssociationSetMapping Name="MonologueCharacter" TypeName="DailyShakespeare.MonologueCharacter" StoreEntitySet="Monologue">
       <EndProperty Name="Character">
         <ScalarProperty Name="Id" ColumnName="Character_Id" />
       </EndProperty>
       <EndProperty Name="Monologue">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="GenderCharacter" TypeName="DailyShakespeare.GenderCharacter" StoreEntitySet="Character">
+      <EndProperty Name="Gender">
+        <ScalarProperty Name="Id" ColumnName="Gender_Id" />
+      </EndProperty>
+      <EndProperty Name="Character">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserTypeUser" TypeName="DailyShakespeare.UserTypeUser" StoreEntitySet="User">
+      <EndProperty Name="UserType">
+        <ScalarProperty Name="Id" ColumnName="UserType_Id" />
+      </EndProperty>
+      <EndProperty Name="User">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
