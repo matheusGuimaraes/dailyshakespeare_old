@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using DailyShakespeare.Model;
-
+using System.Data.Entity;
 
 namespace DailyShakespeare.DAL
 {
@@ -42,7 +42,7 @@ namespace DailyShakespeare.DAL
 
             using (var context = new DailyShakespeareContext())
             {
-                characters = context.Characters.OrderBy(x => x.Name).ToList();
+                characters = context.Characters.Include(x => x.Play).Include(x => x.Gender).OrderBy(x => x.Name).ToList();
 
             }
 
@@ -82,7 +82,14 @@ namespace DailyShakespeare.DAL
         {
             using (var context = new DailyShakespeareContext())
             {
+                if(character.Id == 0)
                 context.Characters.AddObject(character);
+                else
+                {
+                    context.Characters.Attach(character);
+                    context.ObjectStateManager.ChangeObjectState(character, EntityState.Modified);
+                }
+               
                 context.ObjectStateManager.ChangeObjectState(character.Play, EntityState.Unchanged);
                 context.ObjectStateManager.ChangeObjectState(character.Gender, EntityState.Unchanged);
                 context.SaveChanges();

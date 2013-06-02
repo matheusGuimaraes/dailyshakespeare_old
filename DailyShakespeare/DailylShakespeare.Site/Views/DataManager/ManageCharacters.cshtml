@@ -5,7 +5,7 @@
 <tr>
     <td>
         
-        <form action="LoadCharacter">
+        <form action="ManageCharacters">
             <h2>Select a character to edit or add a new one using the panel on the side</h2>
             @Html.DropDownListFor(x => x.SelectedCharacterId, new SelectList(Model.Characters, "Id", "Name"))
             <input type="submit" value="Load"/>
@@ -26,6 +26,7 @@
         <p>
             <input type="submit" value="Save"/>
         </p>
+        @Html.HiddenFor(x => x.SelectedCharacterId)
     </fieldset>
 </form>
 

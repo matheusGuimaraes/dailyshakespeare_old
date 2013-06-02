@@ -41,6 +41,7 @@ namespace DailylShakespeare.Site.Models
         {
             var dto = new CharacterDto();
 
+            dto.Id = model.SelectedCharacterId;
             dto.Name = model.Name;
             dto.PlayId = model.PlayId;
             dto.GenderId = model.GenderId;

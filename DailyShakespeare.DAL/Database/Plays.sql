@@ -126,7 +126,7 @@ INSERT INTO [dbo].[Play]
            ([Name]
            ,[Year])
      VALUES
-           ('Hnery V',1598)
+           ('Henry V',1598)
 GO
 
 INSERT INTO [dbo].[Play]

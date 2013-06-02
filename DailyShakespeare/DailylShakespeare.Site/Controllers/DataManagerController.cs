@@ -40,19 +40,7 @@ namespace DailylShakespeare.Site.Controllers
             
         }
 
-        private List<Character> Characters
-        {
-            get
-            {
-                if (Session["Characters"] == null)
-                {
-                    Session["Characters"] = _service.GetCharacters();
-                }
-
-                return (List<Character>)Session["Characters"];
-            }
-
-        }
+        private List<Character> Characters { get; set; }
 
         public DataManagerController()
         {
@@ -60,10 +48,26 @@ namespace DailylShakespeare.Site.Controllers
 
 
         }
-        public ActionResult ManageCharacters()
+        public ActionResult ManageCharacters(CharacterViewModel model)
         {
+            Characters = _service.GetCharacters();
+            if(model.SelectedCharacterId != 0)
+            {
+                var character = Characters.First(c => c.Id == model.SelectedCharacterId);
+                model.PlayId = character.Play.Id;
+                model.GenderId = character.Gender.Id;
+                model.Name = character.Name;
+                model.Bio = character.Bio;
+              
+            }
 
-            return View(new CharacterViewModel() { Plays = Plays, Genders = Genders, Characters = Characters});
+
+            model.Characters = Characters;
+            model.Plays = Plays;
+            model.Genders = Genders;
+
+
+            return View(model);
         }
 
         public ActionResult SaveCharacter(CharacterViewModel model)
@@ -73,20 +77,9 @@ namespace DailylShakespeare.Site.Controllers
                 _service.SaveCharacter(model.ToDto());
             }
 
-            model.Plays = Plays;
-            model.Genders = Genders;
-            model.Characters = Characters;
-            return View("Characters",model);
+            return RedirectToAction("ManageCharacters");
         }
 
-        public ActionResult LoadCharacter(CharacterViewModel model)
-        {
-
-            model.Characters = Characters;
-            model.Plays = Plays;
-            model.Genders = Genders;
-            return View("Characters", model);
-        }
 
         public ActionResult Monologues()
         {

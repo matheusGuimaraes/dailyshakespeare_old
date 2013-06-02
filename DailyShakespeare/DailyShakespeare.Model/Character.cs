@@ -6,9 +6,9 @@ namespace DailyShakespeare.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Play Play { get; set; }
-        public Gender Gender { get; set; }
+        public virtual Play Play { get; set; }
+        public virtual Gender Gender { get; set; }
         public string Bio { get; set; }
-        public List<Monologue> Monologues { get; set; }
+        public virtual List<Monologue> Monologues { get; set; }
     }
 }
