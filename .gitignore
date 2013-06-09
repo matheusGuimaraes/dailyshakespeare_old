@@ -1,4 +1,5 @@
-_ReSharper.DailyShakespeare/
+/_ReSharper.DailyShakespeare/
+DailyShakespeare/_ReSharper.DailyShakespeare/
 *.suo
 bin/
 obj/

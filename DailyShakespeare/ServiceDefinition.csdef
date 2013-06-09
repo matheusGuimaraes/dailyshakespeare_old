@@ -34,5 +34,8 @@
     <LocalResources>
       <LocalStorage name="DailyShakespeare.DataService.svclog" sizeInMB="1000" cleanOnRoleRecycle="false" />
     </LocalResources>
+    <ConfigurationSettings>
+      <Setting name="DailyShakespeareConnectionString"/>
+    </ConfigurationSettings>
   </WebRole>
 </ServiceDefinition>

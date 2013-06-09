@@ -51,6 +51,7 @@ namespace DailylShakespeare.Site.Controllers
         public ActionResult ManageCharacters(CharacterViewModel model)
         {
             Characters = _service.GetCharacters();
+
             if(model.SelectedCharacterId != 0)
             {
                 var character = Characters.First(c => c.Id == model.SelectedCharacterId);
