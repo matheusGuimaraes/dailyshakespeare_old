@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DailyShakespeare" generation="1" functional="0" release="0" Id="210a4f78-51a5-48b6-a935-cab6582fc751" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DailyShakespeare" generation="1" functional="0" release="0" Id="9e6c9239-1ab5-4d2d-90d9-0852702ab37e" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="DailyShakespeareGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -135,14 +135,14 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="13b145d5-44a5-42c3-a6bc-eac5760dacc8" ref="Microsoft.RedDog.Contract\ServiceContract\DailyShakespeareContract@ServiceDefinition">
+    <implementation Id="e0ba0df3-d46b-4f4e-ae79-6e121a758e0c" ref="Microsoft.RedDog.Contract\ServiceContract\DailyShakespeareContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="e0b2027a-d0b6-4dda-bbda-4c29fef44d0a" ref="Microsoft.RedDog.Contract\Interface\DailylShakespeare.Site:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="6adf70b6-a226-451c-8da6-1a10c0e0fbbb" ref="Microsoft.RedDog.Contract\Interface\DailylShakespeare.Site:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/DailyShakespeare/DailyShakespeareGroup/DailylShakespeare.Site:Endpoint1" />
           </inPort>
         </interfaceReference>
-        <interfaceReference Id="619e6742-3b9f-4254-94fc-dedb97331c9b" ref="Microsoft.RedDog.Contract\Interface\DailyShakespeare.DataService:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="a574cdaf-f13e-4fad-a2f1-e9de8a74bf35" ref="Microsoft.RedDog.Contract\Interface\DailyShakespeare.DataService:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/DailyShakespeare/DailyShakespeareGroup/DailyShakespeare.DataService:Endpoint1" />
           </inPort>
