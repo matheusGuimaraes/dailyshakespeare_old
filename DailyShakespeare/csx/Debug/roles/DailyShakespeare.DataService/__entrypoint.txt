@@ -1,0 +1,1 @@
+bin\DailyShakespeare.DataService.dll
