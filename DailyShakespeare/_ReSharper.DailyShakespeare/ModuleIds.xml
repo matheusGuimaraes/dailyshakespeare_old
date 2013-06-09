@@ -1,7 +1,4 @@
 <Modules>
-  <Module PersistentId="A6F5FCC4-F448-4060-AFFC-22E8699DC760" ModuleId="DailyShakespeare.DAL.Tests" />
   <Module PersistentId="49F60956-0472-44C5-ADA7-51108E265857" ModuleId="DailyShakespeare.DAL" />
-  <Module PersistentId="BD1DB6B0-BE0E-405D-90A1-F6D4A9689135" ModuleId="DailyShakespeare.DataService" />
   <Module PersistentId="7254FB20-17F6-4FAA-9B3B-CB60B5358E3E" ModuleId="DailyShakespeare.Model" />
-  <Module PersistentId="5B622D20-DC93-4A5B-AD47-864E975561E0" ModuleId="DailylShakespeare.Site" />
 </Modules>
