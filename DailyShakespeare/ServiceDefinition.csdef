@@ -15,7 +15,6 @@
       <Import moduleName="Diagnostics" />
     </Imports>
     <ConfigurationSettings>
-      <Setting name="Setting1" />
     </ConfigurationSettings>
   </WebRole>
   <WebRole name="DailyShakespeare.DataService" vmsize="Small">
