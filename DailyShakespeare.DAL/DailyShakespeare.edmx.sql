@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/10/2013 15:13:01
+-- Date Created: 06/10/2013 18:12:30
 -- Generated from EDMX file: H:\DEV\DailyShakespeare\DailyShakespeare.DAL\DailyShakespeare.edmx
 -- --------------------------------------------------
 
@@ -44,6 +44,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_PlayUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Play] DROP CONSTRAINT [FK_PlayUser];
 GO
+IF OBJECT_ID(N'[dbo].[FK_UpdateUpdateType]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Update] DROP CONSTRAINT [FK_UpdateUpdateType];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UpdateUpdateAction]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Update] DROP CONSTRAINT [FK_UpdateUpdateAction];
+GO
+IF OBJECT_ID(N'[dbo].[FK_UpdateUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Update] DROP CONSTRAINT [FK_UpdateUser];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -69,6 +78,15 @@ IF OBJECT_ID(N'[dbo].[Gender]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[UserType]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UserType];
+GO
+IF OBJECT_ID(N'[dbo].[Update]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Update];
+GO
+IF OBJECT_ID(N'[dbo].[UpdateType]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UpdateType];
+GO
+IF OBJECT_ID(N'[dbo].[UpdateAction]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UpdateAction];
 GO
 IF OBJECT_ID(N'[dbo].[MonologueEmotionalState]', 'U') IS NOT NULL
     DROP TABLE [dbo].[MonologueEmotionalState];
@@ -141,6 +159,32 @@ CREATE TABLE [dbo].[UserType] (
 );
 GO
 
+-- Creating table 'Update'
+CREATE TABLE [dbo].[Update] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [UpdatedItemId] int  NOT NULL,
+    [Date] datetime  NOT NULL,
+    [UpdatedItemName] nvarchar(max)  NOT NULL,
+    [UpdateType_Id] int  NOT NULL,
+    [UpdateAction_Id] int  NOT NULL,
+    [User_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'UpdateType'
+CREATE TABLE [dbo].[UpdateType] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Description] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'UpdateAction'
+CREATE TABLE [dbo].[UpdateAction] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Description] nvarchar(max)  NOT NULL
+);
+GO
+
 -- Creating table 'MonologueEmotionalState'
 CREATE TABLE [dbo].[MonologueEmotionalState] (
     [Monologues_Id] int  NOT NULL,
@@ -191,6 +235,24 @@ GO
 -- Creating primary key on [Id] in table 'UserType'
 ALTER TABLE [dbo].[UserType]
 ADD CONSTRAINT [PK_UserType]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Update'
+ALTER TABLE [dbo].[Update]
+ADD CONSTRAINT [PK_Update]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UpdateType'
+ALTER TABLE [dbo].[UpdateType]
+ADD CONSTRAINT [PK_UpdateType]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'UpdateAction'
+ALTER TABLE [dbo].[UpdateAction]
+ADD CONSTRAINT [PK_UpdateAction]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -323,6 +385,48 @@ ADD CONSTRAINT [FK_PlayUser]
 CREATE INDEX [IX_FK_PlayUser]
 ON [dbo].[Play]
     ([LastUpdatedBy_Id]);
+GO
+
+-- Creating foreign key on [UpdateType_Id] in table 'Update'
+ALTER TABLE [dbo].[Update]
+ADD CONSTRAINT [FK_UpdateUpdateType]
+    FOREIGN KEY ([UpdateType_Id])
+    REFERENCES [dbo].[UpdateType]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UpdateUpdateType'
+CREATE INDEX [IX_FK_UpdateUpdateType]
+ON [dbo].[Update]
+    ([UpdateType_Id]);
+GO
+
+-- Creating foreign key on [UpdateAction_Id] in table 'Update'
+ALTER TABLE [dbo].[Update]
+ADD CONSTRAINT [FK_UpdateUpdateAction]
+    FOREIGN KEY ([UpdateAction_Id])
+    REFERENCES [dbo].[UpdateAction]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UpdateUpdateAction'
+CREATE INDEX [IX_FK_UpdateUpdateAction]
+ON [dbo].[Update]
+    ([UpdateAction_Id]);
+GO
+
+-- Creating foreign key on [User_Id] in table 'Update'
+ALTER TABLE [dbo].[Update]
+ADD CONSTRAINT [FK_UpdateUser]
+    FOREIGN KEY ([User_Id])
+    REFERENCES [dbo].[User]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_UpdateUser'
+CREATE INDEX [IX_FK_UpdateUser]
+ON [dbo].[Update]
+    ([User_Id]);
 GO
 
 -- --------------------------------------------------

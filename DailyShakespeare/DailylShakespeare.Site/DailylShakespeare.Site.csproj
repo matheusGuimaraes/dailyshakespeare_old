@@ -182,6 +182,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CharacterViewModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\MonologueViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRole.cs" />

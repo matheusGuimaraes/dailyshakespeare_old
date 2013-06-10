@@ -424,4 +424,37 @@ INSERT INTO [dbo].[Play]
            ('The Two Noble Kinsmen',1612,getDate(),1)
 GO
 
+-------------------------------------------- UPDATE TYPES------------------------------------------
 
+INSERT INTO [dbo].[UpdateType]
+           ([Description])
+     VALUES
+           ('Character')
+GO
+
+INSERT INTO [dbo].[UpdateType]
+           ([Description])
+     VALUES
+           ('Play')
+GO
+-------------------------------------------- UPDATE ACTIONS------------------------------------------
+
+INSERT INTO [dbo].[UpdateAction]
+           ([Description])
+     VALUES
+           ('Added')
+GO
+
+
+INSERT INTO [dbo].[UpdateAction]
+           ([Description])
+     VALUES
+           ('Updated')
+GO
+
+
+INSERT INTO [dbo].[UpdateAction]
+           ([Description])
+     VALUES
+           ('Deleted')
+GO

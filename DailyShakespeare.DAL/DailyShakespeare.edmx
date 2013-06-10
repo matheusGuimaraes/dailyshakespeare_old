@@ -13,6 +13,9 @@
     <EntitySet Name="Character" EntityType="DailyShakespeare.Store.Character" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Gender" EntityType="DailyShakespeare.Store.Gender" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UserType" EntityType="DailyShakespeare.Store.UserType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Update" EntityType="DailyShakespeare.Store.Update" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UpdateType" EntityType="DailyShakespeare.Store.UpdateType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UpdateAction" EntityType="DailyShakespeare.Store.UpdateAction" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="MonologueEmotionalState" EntityType="DailyShakespeare.Store.MonologueEmotionalState" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="MonologueUser" Association="DailyShakespeare.Store.MonologueUser">
       <End Role="Monologue" EntitySet="Monologue" />
@@ -48,6 +51,18 @@
     </AssociationSet>
     <AssociationSet Name="PlayUser" Association="DailyShakespeare.Store.PlayUser">
       <End Role="Play" EntitySet="Play" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="UpdateUpdateType" Association="DailyShakespeare.Store.UpdateUpdateType">
+      <End Role="Update" EntitySet="Update" />
+      <End Role="UpdateType" EntitySet="UpdateType" />
+    </AssociationSet>
+    <AssociationSet Name="UpdateUpdateAction" Association="DailyShakespeare.Store.UpdateUpdateAction">
+      <End Role="Update" EntitySet="Update" />
+      <End Role="UpdateAction" EntitySet="UpdateAction" />
+    </AssociationSet>
+    <AssociationSet Name="UpdateUser" Association="DailyShakespeare.Store.UpdateUser">
+      <End Role="Update" EntitySet="Update" />
       <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
@@ -108,6 +123,32 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Update">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UpdatedItemId" Type="int" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="UpdatedItemName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UpdateType_Id" Type="int" Nullable="false" />
+    <Property Name="UpdateAction_Id" Type="int" Nullable="false" />
+    <Property Name="User_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UpdateType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UpdateAction">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -206,6 +247,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="UpdateUpdateType">
+    <End Role="Update" Type="DailyShakespeare.Store.Update" Multiplicity="*" />
+    <End Role="UpdateType" Type="DailyShakespeare.Store.UpdateType" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UpdateType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Update">
+        <PropertyRef Name="UpdateType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UpdateUpdateAction">
+    <End Role="Update" Type="DailyShakespeare.Store.Update" Multiplicity="*" />
+    <End Role="UpdateAction" Type="DailyShakespeare.Store.UpdateAction" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="UpdateAction">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Update">
+        <PropertyRef Name="UpdateAction_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UpdateUser">
+    <End Role="Update" Type="DailyShakespeare.Store.Update" Multiplicity="*" />
+    <End Role="User" Type="DailyShakespeare.Store.User" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Update">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_MonologueEmotionalState_Monologue">
     <End Role="Monologue" Type="DailyShakespeare.Store.Monologue" Multiplicity="1" />
     <End Role="MonologueEmotionalState" Type="DailyShakespeare.Store.MonologueEmotionalState" Multiplicity="*" />
@@ -274,6 +351,21 @@
             <End Role="Play" EntitySet="Play" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
+          <EntitySet Name="Update" EntityType="DailyShakespeare.Update" />
+          <EntitySet Name="UpdateType" EntityType="DailyShakespeare.UpdateType" />
+          <EntitySet Name="UpdateAction" EntityType="DailyShakespeare.UpdateAction" />
+          <AssociationSet Name="UpdateUpdateType" Association="DailyShakespeare.UpdateUpdateType">
+            <End Role="Update" EntitySet="Update" />
+            <End Role="UpdateType" EntitySet="UpdateType" />
+          </AssociationSet>
+          <AssociationSet Name="UpdateUpdateAction" Association="DailyShakespeare.UpdateUpdateAction">
+            <End Role="Update" EntitySet="Update" />
+            <End Role="UpdateAction" EntitySet="UpdateAction" />
+          </AssociationSet>
+          <AssociationSet Name="UpdateUser" Association="DailyShakespeare.UpdateUser">
+            <End Role="Update" EntitySet="Update" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Monologue">
           <Key>
@@ -298,6 +390,7 @@
           <NavigationProperty Name="UserType" Relationship="DailyShakespeare.UserTypeUser" FromRole="User" ToRole="UserType" />
           <NavigationProperty Name="Characters" Relationship="DailyShakespeare.CharacterUser" FromRole="User" ToRole="Character" />
           <NavigationProperty Name="Plays" Relationship="DailyShakespeare.PlayUser" FromRole="User" ToRole="Play" />
+          <NavigationProperty Name="Updates" Relationship="DailyShakespeare.UpdateUser" FromRole="User" ToRole="Update" />
         </EntityType>
         <EntityType Name="EmotionalState">
           <Key>
@@ -379,6 +472,46 @@
           <End Type="DailyShakespeare.Play" Role="Play" Multiplicity="*" />
           <End Type="DailyShakespeare.User" Role="User" Multiplicity="1" />
         </Association>
+        <EntityType Name="Update">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UpdatedItemId" Nullable="false" />
+          <NavigationProperty Name="UpdateType" Relationship="DailyShakespeare.UpdateUpdateType" FromRole="Update" ToRole="UpdateType" />
+          <NavigationProperty Name="UpdateAction" Relationship="DailyShakespeare.UpdateUpdateAction" FromRole="Update" ToRole="UpdateAction" />
+          <NavigationProperty Name="User" Relationship="DailyShakespeare.UpdateUser" FromRole="Update" ToRole="User" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="UpdatedItemName" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UpdateType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Updates" Relationship="DailyShakespeare.UpdateUpdateType" FromRole="UpdateType" ToRole="Update" />
+        </EntityType>
+        <EntityType Name="UpdateAction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" />
+          <NavigationProperty Name="Updates" Relationship="DailyShakespeare.UpdateUpdateAction" FromRole="UpdateAction" ToRole="Update" />
+        </EntityType>
+        <Association Name="UpdateUpdateType">
+          <End Type="DailyShakespeare.Update" Role="Update" Multiplicity="*" />
+          <End Type="DailyShakespeare.UpdateType" Role="UpdateType" Multiplicity="1" />
+        </Association>
+        <Association Name="UpdateUpdateAction">
+          <End Type="DailyShakespeare.Update" Role="Update" Multiplicity="*" />
+          <End Type="DailyShakespeare.UpdateAction" Role="UpdateAction" Multiplicity="1" />
+        </Association>
+        <Association Name="UpdateUser">
+          <End Type="DailyShakespeare.Update" Role="Update" Multiplicity="*" />
+          <End Type="DailyShakespeare.User" Role="User" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -448,6 +581,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Update">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.Update)">
+        <MappingFragment StoreEntitySet="Update">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UpdatedItemId" ColumnName="UpdatedItemId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UpdatedItemName" ColumnName="UpdatedItemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UpdateType">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.UpdateType)">
+        <MappingFragment StoreEntitySet="UpdateType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UpdateAction">
+      <EntityTypeMapping TypeName="IsTypeOf(DailyShakespeare.UpdateAction)">
+        <MappingFragment StoreEntitySet="UpdateAction">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="MonologueUser" TypeName="DailyShakespeare.MonologueUser" StoreEntitySet="Monologue">
       <EndProperty Name="User">
         <ScalarProperty Name="Id" ColumnName="LastUpdatedBy_Id" />
@@ -509,6 +668,30 @@
         <ScalarProperty Name="Id" ColumnName="LastUpdatedBy_Id" />
       </EndProperty>
       <EndProperty Name="Play">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UpdateUpdateType" TypeName="DailyShakespeare.UpdateUpdateType" StoreEntitySet="Update">
+      <EndProperty Name="UpdateType">
+        <ScalarProperty Name="Id" ColumnName="UpdateType_Id" />
+      </EndProperty>
+      <EndProperty Name="Update">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UpdateUpdateAction" TypeName="DailyShakespeare.UpdateUpdateAction" StoreEntitySet="Update">
+      <EndProperty Name="UpdateAction">
+        <ScalarProperty Name="Id" ColumnName="UpdateAction_Id" />
+      </EndProperty>
+      <EndProperty Name="Update">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UpdateUser" TypeName="DailyShakespeare.UpdateUser" StoreEntitySet="Update">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="User_Id" />
+      </EndProperty>
+      <EndProperty Name="Update">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

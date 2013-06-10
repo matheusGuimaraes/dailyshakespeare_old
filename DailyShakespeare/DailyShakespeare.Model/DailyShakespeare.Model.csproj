@@ -42,11 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Character.cs" />
+    <Compile Include="UpdateAction.cs" />
+    <Compile Include="UpdateType.cs" />
     <Compile Include="EmotionalState.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Monologue.cs" />
     <Compile Include="Play.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Update.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserType.cs" />
   </ItemGroup>

@@ -12,6 +12,9 @@ namespace DailyShakespeare.DAL
         private ObjectSet<EmotionalState> _emotionalStates;
         private ObjectSet<User> _users;
         private ObjectSet<UserType> _userTypes;
+        private ObjectSet<Update> _updates;
+        private ObjectSet<UpdateType> _updateTypes;
+        private ObjectSet<UpdateAction> _updateActions;
  
  
         public DailyShakespeareContext() : base("name=DailyShakespeare")
@@ -52,6 +55,21 @@ namespace DailyShakespeare.DAL
         public ObjectSet<Play> Plays
         {
             get { return _plays ?? (_plays = CreateObjectSet<Play>()); }
+        }
+
+        public ObjectSet<Update> Updates
+        {
+            get { return _updates ?? (_updates = CreateObjectSet<Update>()); }
+        }
+
+        public ObjectSet<UpdateType> UpdateTypes
+        {
+            get { return _updateTypes ?? (_updateTypes = CreateObjectSet<UpdateType>()); }
+        }
+
+        public ObjectSet<UpdateAction> UpdateActions
+        {
+            get { return _updateActions ?? (_updateActions = CreateObjectSet<UpdateAction>()); }
         }
     }
 }

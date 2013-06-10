@@ -19,6 +19,9 @@ namespace DailyShakespeare.DataService
         List<Character> GetCharacters();
 
         [OperationContract]
+        List<Update> GetLatestUpdates(int numberToRetrieve);
+
+        [OperationContract]
         void SaveCharacter(CharacterDto character);
 
     }

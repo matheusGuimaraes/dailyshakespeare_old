@@ -20,6 +20,12 @@
         <AssociationConnector Association="DailyShakespeare.UserTypeUser" />
         <AssociationConnector Association="DailyShakespeare.CharacterUser" />
         <AssociationConnector Association="DailyShakespeare.PlayUser" />
+        <EntityTypeShape EntityType="DailyShakespeare.Update" Width="1.5" PointX="8.125" PointY="4.875" />
+        <EntityTypeShape EntityType="DailyShakespeare.UpdateType" Width="1.5" PointX="10.75" PointY="5" />
+        <EntityTypeShape EntityType="DailyShakespeare.UpdateAction" Width="1.5" PointX="13.5" PointY="4.75" />
+        <AssociationConnector Association="DailyShakespeare.UpdateUpdateType" />
+        <AssociationConnector Association="DailyShakespeare.UpdateUpdateAction" />
+        <AssociationConnector Association="DailyShakespeare.UpdateUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

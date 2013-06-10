@@ -11,5 +11,6 @@ namespace DailyShakespeare.DAL
         List<Gender> GetGenders();
         void UpdatePlay(Play play);
         void SaveCharacter(Character character);
+        List<Update> GetLatestUpdates(int numberToRetrieve);
     }
 }

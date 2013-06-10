@@ -32,5 +32,8 @@
 //        public DbSet<Character> Character { get; set; }
 //        public DbSet<Gender> Gender { get; set; }
 //        public DbSet<UserType> UserType { get; set; }
+//        public DbSet<Update> Update { get; set; }
+//        public DbSet<UpdateType> UpdateType { get; set; }
+//        public DbSet<UpdateAction> UpdateAction { get; set; }
 //    }
 //}

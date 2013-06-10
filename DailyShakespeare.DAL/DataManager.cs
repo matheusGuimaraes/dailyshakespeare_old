@@ -82,11 +82,17 @@ namespace DailyShakespeare.DAL
         {
             using (var context = new DailyShakespeareContext())
             {
+                var isNew = false;
+
                 character.LastUpdatedOn = DateTime.UtcNow;
                 character.LastUpdatedBy = context.Users.First();
 
                 if(character.Id == 0)
-                context.Characters.AddObject(character);
+                {
+                    isNew = true;
+                    context.Characters.AddObject(character);
+                }
+                    
                 else
                 {
                     context.Characters.Attach(character);
@@ -95,8 +101,38 @@ namespace DailyShakespeare.DAL
                
                 context.ObjectStateManager.ChangeObjectState(character.Play, EntityState.Unchanged);
                 context.ObjectStateManager.ChangeObjectState(character.Gender, EntityState.Unchanged);
+
                 context.SaveChanges();
+
+                //record update
+                var update = new Update();
+                update.UpdateType = context.UpdateTypes.First(x => x.Description == "Character");
+                var action = isNew ? "Added" : "Updated";
+                update.UpdateAction = context.UpdateActions.First(x => x.Description == action);
+                update.UpdatedItemId = character.Id;
+                update.UpdatedItemName = character.Name;
+                update.User = context.Users.First();
+                update.Date = DateTime.UtcNow;
+
+                context.Updates.AddObject(update);
+                context.SaveChanges();
+
+
             }
+        }
+ 
+        public List<Update> GetLatestUpdates(int numberToRetrieve)
+        {
+            List<Update> updates;
+
+            using(var context = new DailyShakespeareContext())
+            {
+               updates  = context.Updates.Include(x => x.User).Include(x => x.UpdateAction).Include(x => x.UpdateType).OrderByDescending(x => x.Date).Take(numberToRetrieve).ToList();
+
+            }
+
+           return  updates;
+
         }
     }
 }

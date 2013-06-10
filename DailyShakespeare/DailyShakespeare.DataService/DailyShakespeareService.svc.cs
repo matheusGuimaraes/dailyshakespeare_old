@@ -30,6 +30,11 @@ namespace DailyShakespeare.DataService
             return _dataManager.GetCharacters();
         }
 
+        public List<Update> GetLatestUpdates(int numberToRetrieve)
+        {
+            return _dataManager.GetLatestUpdates(numberToRetrieve);
+        }
+
         public void SaveCharacter(CharacterDto characterDto)
         {
             var character = new Character();
