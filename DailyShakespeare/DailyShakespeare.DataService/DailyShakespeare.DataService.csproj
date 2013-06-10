@@ -87,6 +87,7 @@
       <DependentUpon>DailyShakespeareService.svc</DependentUpon>
     </Compile>
     <Compile Include="Dtos\CharacterDto.cs" />
+    <Compile Include="Dtos\MonologueDto.cs" />
     <Compile Include="IDailyShakespeareService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebRole.cs" />

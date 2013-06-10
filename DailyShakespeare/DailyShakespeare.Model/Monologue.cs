@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DailyShakespeare.Model
 {
@@ -9,8 +10,6 @@ namespace DailyShakespeare.Model
         public User LastUpdatedBy { get; set; }
         public List<EmotionalState> EmotionalStates { get; set; }
         public Character Character { get; set; }
-        public Play Play { get; set; }
-
-        
+        public DateTime LastUpdatedOn { get; set; }
     }
 }

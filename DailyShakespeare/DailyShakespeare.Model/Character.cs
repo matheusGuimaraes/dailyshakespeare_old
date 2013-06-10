@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DailyShakespeare.Model
 {
@@ -10,5 +11,7 @@ namespace DailyShakespeare.Model
         public virtual Gender Gender { get; set; }
         public string Bio { get; set; }
         public virtual List<Monologue> Monologues { get; set; }
+        public DateTime LastUpdatedOn { get; set; }
+        public User LastUpdatedBy { get; set; }
     }
 }

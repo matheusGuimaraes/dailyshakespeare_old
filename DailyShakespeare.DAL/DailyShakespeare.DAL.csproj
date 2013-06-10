@@ -81,9 +81,7 @@
       <LastGenOutput>DailyShakespeare.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DailyShakespeare.edmx.sql" />
-    <Content Include="Database\Genders.sql" />
-    <Content Include="Database\EmotionalStates.sql" />
-    <Content Include="Database\Plays.sql" />
+    <Content Include="Database\InitData.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DailyShakespeare.edmx.diagram">

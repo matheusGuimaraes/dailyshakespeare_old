@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="DailyShakespeare.User" Width="1.5" PointX="9.375" PointY="1.375" />
         <EntityTypeShape EntityType="DailyShakespeare.EmotionalState" Width="1.5" PointX="3.25" PointY="0.75" />
         <EntityTypeShape EntityType="DailyShakespeare.Play" Width="1.5" PointX="4.375" PointY="3.25" />
-        <AssociationConnector Association="DailyShakespeare.MonologuePlay" />
         <AssociationConnector Association="DailyShakespeare.MonologueUser" />
         <AssociationConnector Association="DailyShakespeare.MonologueEmotionalState" />
         <EntityTypeShape EntityType="DailyShakespeare.Character" Width="1.5" PointX="1.875" PointY="2.875" />
@@ -19,6 +18,8 @@
         <AssociationConnector Association="DailyShakespeare.GenderCharacter" />
         <EntityTypeShape EntityType="DailyShakespeare.UserType" Width="1.5" PointX="12.25" PointY="1.625" />
         <AssociationConnector Association="DailyShakespeare.UserTypeUser" />
+        <AssociationConnector Association="DailyShakespeare.CharacterUser" />
+        <AssociationConnector Association="DailyShakespeare.PlayUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

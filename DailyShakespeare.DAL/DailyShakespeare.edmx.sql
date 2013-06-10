@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/02/2013 12:45:27
+-- Date Created: 06/10/2013 14:46:38
 -- Generated from EDMX file: H:\DEV\DailyShakespeare\DailyShakespeare.DAL\DailyShakespeare.edmx
 -- --------------------------------------------------
 
@@ -17,9 +17,6 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_MonologuePlay]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Monologue] DROP CONSTRAINT [FK_MonologuePlay];
-GO
 IF OBJECT_ID(N'[dbo].[FK_MonologueUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Monologue] DROP CONSTRAINT [FK_MonologueUser];
 GO
@@ -40,6 +37,12 @@ IF OBJECT_ID(N'[dbo].[FK_GenderCharacter]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_UserTypeUser]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[User] DROP CONSTRAINT [FK_UserTypeUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CharacterUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Character] DROP CONSTRAINT [FK_CharacterUser];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlayUser]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Play] DROP CONSTRAINT [FK_PlayUser];
 GO
 
 -- --------------------------------------------------
@@ -79,7 +82,7 @@ GO
 CREATE TABLE [dbo].[Monologue] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Content] nvarchar(max)  NOT NULL,
-    [Play_Id] int  NOT NULL,
+    [LastUpdatedOn] nvarchar(max)  NOT NULL,
     [LastUpdatedBy_Id] int  NOT NULL,
     [Character_Id] int  NOT NULL
 );
@@ -106,7 +109,9 @@ GO
 CREATE TABLE [dbo].[Play] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [Year] int  NOT NULL
+    [Year] int  NOT NULL,
+    [LastUpdatedOn] datetime  NULL,
+    [LastUpdatedBy_Id] int  NOT NULL
 );
 GO
 
@@ -115,8 +120,10 @@ CREATE TABLE [dbo].[Character] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Bio] nvarchar(max)  NOT NULL,
+    [LastUpdatedOn] datetime  NOT NULL,
     [Play_Id] int  NOT NULL,
-    [Gender_Id] int  NOT NULL
+    [Gender_Id] int  NOT NULL,
+    [LastUpdatedBy_Id] int  NOT NULL
 );
 GO
 
@@ -196,20 +203,6 @@ GO
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [Play_Id] in table 'Monologue'
-ALTER TABLE [dbo].[Monologue]
-ADD CONSTRAINT [FK_MonologuePlay]
-    FOREIGN KEY ([Play_Id])
-    REFERENCES [dbo].[Play]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_MonologuePlay'
-CREATE INDEX [IX_FK_MonologuePlay]
-ON [dbo].[Monologue]
-    ([Play_Id]);
-GO
 
 -- Creating foreign key on [LastUpdatedBy_Id] in table 'Monologue'
 ALTER TABLE [dbo].[Monologue]
@@ -302,6 +295,34 @@ ADD CONSTRAINT [FK_UserTypeUser]
 CREATE INDEX [IX_FK_UserTypeUser]
 ON [dbo].[User]
     ([UserType_Id]);
+GO
+
+-- Creating foreign key on [LastUpdatedBy_Id] in table 'Character'
+ALTER TABLE [dbo].[Character]
+ADD CONSTRAINT [FK_CharacterUser]
+    FOREIGN KEY ([LastUpdatedBy_Id])
+    REFERENCES [dbo].[User]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_CharacterUser'
+CREATE INDEX [IX_FK_CharacterUser]
+ON [dbo].[Character]
+    ([LastUpdatedBy_Id]);
+GO
+
+-- Creating foreign key on [LastUpdatedBy_Id] in table 'Play'
+ALTER TABLE [dbo].[Play]
+ADD CONSTRAINT [FK_PlayUser]
+    FOREIGN KEY ([LastUpdatedBy_Id])
+    REFERENCES [dbo].[User]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PlayUser'
+CREATE INDEX [IX_FK_PlayUser]
+ON [dbo].[Play]
+    ([LastUpdatedBy_Id]);
 GO
 
 -- --------------------------------------------------

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using DailyShakespeare.DataService;
 using DailyShakespeare.Model;
@@ -48,7 +46,7 @@ namespace DailylShakespeare.Site.Controllers
 
 
         }
-        public ActionResult ManageCharacters(CharacterViewModel model)
+        public ViewResult ManageCharacters(CharacterViewModel model)
         {
             Characters = _service.GetCharacters();
 
@@ -82,10 +80,10 @@ namespace DailylShakespeare.Site.Controllers
         }
 
 
-        public ActionResult Monologues()
+     
+        public ViewResult ManageMonologues(MonologueViewModel model)
         {
             return View();
         }
-
     }
 }
