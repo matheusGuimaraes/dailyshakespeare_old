@@ -57,7 +57,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastUpdatedOn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
     <Property Name="LastUpdatedBy_Id" Type="int" Nullable="false" />
     <Property Name="Character_Id" Type="int" Nullable="false" />
   </EntityType>
@@ -284,7 +284,7 @@
           <NavigationProperty Name="LastUpdatedBy" Relationship="DailyShakespeare.MonologueUser" FromRole="Monologue" ToRole="User" />
           <NavigationProperty Name="EmotionalStates" Relationship="DailyShakespeare.MonologueEmotionalState" FromRole="Monologue" ToRole="EmotionalState" />
           <NavigationProperty Name="Character" Relationship="DailyShakespeare.MonologueCharacter" FromRole="Monologue" ToRole="Character" />
-          <Property Type="String" Name="LastUpdatedOn" Nullable="false" />
+          <Property Type="DateTime" Name="LastUpdatedOn" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>

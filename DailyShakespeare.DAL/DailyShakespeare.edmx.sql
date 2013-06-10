@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/10/2013 14:46:38
+-- Date Created: 06/10/2013 15:13:01
 -- Generated from EDMX file: H:\DEV\DailyShakespeare\DailyShakespeare.DAL\DailyShakespeare.edmx
 -- --------------------------------------------------
 
@@ -82,7 +82,7 @@ GO
 CREATE TABLE [dbo].[Monologue] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Content] nvarchar(max)  NOT NULL,
-    [LastUpdatedOn] nvarchar(max)  NOT NULL,
+    [LastUpdatedOn] datetime  NOT NULL,
     [LastUpdatedBy_Id] int  NOT NULL,
     [Character_Id] int  NOT NULL
 );

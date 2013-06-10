@@ -11,5 +11,7 @@ namespace DailyShakespeare.Model
         public UserType UserType { get; set; }
 
         public List< Monologue> Monologues { get; set; }
+        public List<Character> Characters { get; set; }
+        public List<Play> Plays { get; set; }
     }
 }

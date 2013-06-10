@@ -83,6 +83,7 @@ namespace DailyShakespeare.DAL
             using (var context = new DailyShakespeareContext())
             {
                 character.LastUpdatedOn = DateTime.UtcNow;
+                character.LastUpdatedBy = context.Users.First();
 
                 if(character.Id == 0)
                 context.Characters.AddObject(character);
