@@ -19,7 +19,7 @@
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="DailyShakespeareConnectionString" value="metadata=res://*/DailyShakespeare.csdl|res://*/DailyShakespeare.ssdl|res://*/DailyShakespeare.msl;provider=System.Data.SqlClient;provider connection string=&quot;Server=tcp:y0nnm04r44.database.windows.net,1433;Database=DailyShakespeare;User ID=guimak@y0nnm04r44;Password=finalfX2;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;&quot;" />
+      <Setting name="DailyShakespeare" value="metadata=res://*/DailyShakespeare.csdl|res://*/DailyShakespeare.ssdl|res://*/DailyShakespeare.msl;provider=System.Data.SqlClient;provider connection string=&quot;Server=tcp:y0nnm04r44.database.windows.net,1433;Database=DailyShakespeare;User ID=guimak@y0nnm04r44;Password=finalfX2;Trusted_Connection=False;Encrypt=True;Connection Timeout=30;&quot;" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
