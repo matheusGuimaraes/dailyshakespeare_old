@@ -1,4 +1,5 @@
 ﻿@model DailylShakespeare.Site.Models.HomeViewModel
+@using DailylShakespeare.Site.Models;
 
 <div id="body">
     @*<section class="featured">
@@ -10,20 +11,16 @@
     </section>*@
     <section class="content-wrapper main-content clear-fix">
         <h3>Latest Updates</h3>
-         <ol class="round">
-        @foreach(var update in Model.Updates)
-        {
-            <li class="one">
-                <h5>@update.Date</h5>
-                @string.Format("{0} {1} - {2} - {3}: {4}",update.User.FirstName, update.User.LastName, update.UpdateAction.Description, update.UpdateType.Description, update.UpdatedItemName)
-            </li>
-            @*<li class="three">
-                <h5>Find Web Hosting</h5>
-                You can easily find a web hosting company that offers the right mix of features
-                and price for your applications.
-                <a href="http://go.microsoft.com/fwlink/?LinkId=245164">Learn more…</a>
-            </li>*@
-        }
+        <ol class="round">
+            
+            @foreach (var update in Model.Updates.Select((x, i) => new { Item = x, i = i + 1 }))
+            {
+                <li class="@Html.TranslateNumber(update.i)">
+                    <h5>@update.Item.Date</h5>
+                    @string.Format("{0} {1} - {2} - {3}: {4}",update.Item.User.FirstName, update.Item.User.LastName, update.Item.UpdateAction.Description, update.Item.UpdateType.Description, update.Item.UpdatedItemName)
+                </li>
+                
+            }
         </ol>
     </section>
 </div>
