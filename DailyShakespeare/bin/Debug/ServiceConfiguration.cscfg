@@ -8,7 +8,7 @@
 
   **********************************************************************************************
 -->
-<ServiceConfiguration serviceName="DailyShakespeare" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2012-10.1.8">
+<ServiceConfiguration serviceName="DailyShakespeare" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="3" osVersion="*" schemaVersion="2013-03.2.0">
   <Role name="DailylShakespeare.Site">
     <Instances count="1" />
     <ConfigurationSettings>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ServiceDefinition name="DailyShakespeare" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2012-10.1.8">
+<ServiceDefinition name="DailyShakespeare" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2013-03.2.0">
   <WebRole name="DailylShakespeare.Site" vmsize="Small">
     <Sites>
       <Site name="Web">
@@ -14,8 +14,7 @@
     <Imports>
       <Import moduleName="Diagnostics" />
     </Imports>
-    <ConfigurationSettings>
-    </ConfigurationSettings>
+    <ConfigurationSettings></ConfigurationSettings>
   </WebRole>
   <WebRole name="DailyShakespeare.DataService" vmsize="Small">
     <Sites>
@@ -35,7 +34,7 @@
       <LocalStorage name="DailyShakespeare.DataService.svclog" sizeInMB="1000" cleanOnRoleRecycle="false" />
     </LocalResources>
     <ConfigurationSettings>
-      <Setting name="DailyShakespeare"/>
+      <Setting name="DailyShakespeare" />
     </ConfigurationSettings>
   </WebRole>
 </ServiceDefinition>
