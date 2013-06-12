@@ -19,6 +19,8 @@ namespace DailylShakespeare.Site.Models
 
         public int SelectedCharacterId { get; set; }
 
+        public int SelectedPlayId { get; set; }
+
         [DisplayName("Monologue* :")]
         [Required]
         public string Content { get; set; }

@@ -1,6 +1,4 @@
-﻿@{
-    Layout = null;
-}
+﻿@model MonologueViewModel
 
 <!DOCTYPE html>
 
@@ -11,7 +9,13 @@
 </head>
 <body>
     <div>
-        
+        <form action="SaveMonologue">
+            @Html.DropDownListFor(x => x.SelectedPlayId, new SelectList(Model.Plays, "Id", "Name"));
+            @Html.DropDownListFor(x => x.SelectedCharacterId, new SelectList(Model.Characters, "Id", "Name"));
+            @Html.TextAreaFor(x => x.Content);
+            <input type="submit" value="Save"/>
+
+        </form>
     </div>
 </body>
 </html>
