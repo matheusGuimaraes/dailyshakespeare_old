@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 06/10/2013 18:12:30
+-- Date Created: 06/10/2013 22:24:35
 -- Generated from EDMX file: H:\DEV\DailyShakespeare\DailyShakespeare.DAL\DailyShakespeare.edmx
 -- --------------------------------------------------
 
@@ -100,8 +100,8 @@ GO
 CREATE TABLE [dbo].[Monologue] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Content] nvarchar(max)  NOT NULL,
-    [LastUpdatedOn] datetime  NOT NULL,
-    [LastUpdatedBy_Id] int  NOT NULL,
+    [ReferenceName] nvarchar(max)  NOT NULL,
+    [MonologueUser_Monologue_Id] int  NOT NULL,
     [Character_Id] int  NOT NULL
 );
 GO
@@ -128,8 +128,7 @@ CREATE TABLE [dbo].[Play] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Year] int  NOT NULL,
-    [LastUpdatedOn] datetime  NULL,
-    [LastUpdatedBy_Id] int  NOT NULL
+    [PlayUser_Play_Id] int  NOT NULL
 );
 GO
 
@@ -138,10 +137,9 @@ CREATE TABLE [dbo].[Character] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Bio] nvarchar(max)  NOT NULL,
-    [LastUpdatedOn] datetime  NOT NULL,
     [Play_Id] int  NOT NULL,
     [Gender_Id] int  NOT NULL,
-    [LastUpdatedBy_Id] int  NOT NULL
+    [CharacterUser_Character_Id] int  NOT NULL
 );
 GO
 
@@ -266,10 +264,10 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [LastUpdatedBy_Id] in table 'Monologue'
+-- Creating foreign key on [MonologueUser_Monologue_Id] in table 'Monologue'
 ALTER TABLE [dbo].[Monologue]
 ADD CONSTRAINT [FK_MonologueUser]
-    FOREIGN KEY ([LastUpdatedBy_Id])
+    FOREIGN KEY ([MonologueUser_Monologue_Id])
     REFERENCES [dbo].[User]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -277,7 +275,7 @@ ADD CONSTRAINT [FK_MonologueUser]
 -- Creating non-clustered index for FOREIGN KEY 'FK_MonologueUser'
 CREATE INDEX [IX_FK_MonologueUser]
 ON [dbo].[Monologue]
-    ([LastUpdatedBy_Id]);
+    ([MonologueUser_Monologue_Id]);
 GO
 
 -- Creating foreign key on [Monologues_Id] in table 'MonologueEmotionalState'
@@ -359,10 +357,10 @@ ON [dbo].[User]
     ([UserType_Id]);
 GO
 
--- Creating foreign key on [LastUpdatedBy_Id] in table 'Character'
+-- Creating foreign key on [CharacterUser_Character_Id] in table 'Character'
 ALTER TABLE [dbo].[Character]
 ADD CONSTRAINT [FK_CharacterUser]
-    FOREIGN KEY ([LastUpdatedBy_Id])
+    FOREIGN KEY ([CharacterUser_Character_Id])
     REFERENCES [dbo].[User]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -370,13 +368,13 @@ ADD CONSTRAINT [FK_CharacterUser]
 -- Creating non-clustered index for FOREIGN KEY 'FK_CharacterUser'
 CREATE INDEX [IX_FK_CharacterUser]
 ON [dbo].[Character]
-    ([LastUpdatedBy_Id]);
+    ([CharacterUser_Character_Id]);
 GO
 
--- Creating foreign key on [LastUpdatedBy_Id] in table 'Play'
+-- Creating foreign key on [PlayUser_Play_Id] in table 'Play'
 ALTER TABLE [dbo].[Play]
 ADD CONSTRAINT [FK_PlayUser]
-    FOREIGN KEY ([LastUpdatedBy_Id])
+    FOREIGN KEY ([PlayUser_Play_Id])
     REFERENCES [dbo].[User]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -384,7 +382,7 @@ ADD CONSTRAINT [FK_PlayUser]
 -- Creating non-clustered index for FOREIGN KEY 'FK_PlayUser'
 CREATE INDEX [IX_FK_PlayUser]
 ON [dbo].[Play]
-    ([LastUpdatedBy_Id]);
+    ([PlayUser_Play_Id]);
 GO
 
 -- Creating foreign key on [UpdateType_Id] in table 'Update'

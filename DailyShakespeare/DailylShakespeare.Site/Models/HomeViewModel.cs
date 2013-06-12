@@ -29,6 +29,7 @@ namespace DailylShakespeare.Site.Models
                     break;
                 default:
                     word = string.Empty;
+                    break;
             }
 
             return new MvcHtmlString(word);

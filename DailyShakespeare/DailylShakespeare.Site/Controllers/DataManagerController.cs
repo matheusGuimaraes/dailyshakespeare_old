@@ -83,7 +83,7 @@ namespace DailylShakespeare.Site.Controllers
      
         public ViewResult ManageMonologues(MonologueViewModel model)
         {
-            return View();
+            return View(model);
         }
     }
 }
