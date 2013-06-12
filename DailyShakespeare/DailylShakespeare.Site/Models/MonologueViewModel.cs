@@ -10,7 +10,7 @@ namespace DailylShakespeare.Site.Models
     {
         public int Id { get; set; }
 
-        [DisplayName("Name* :")]
+        [DisplayName("Reference Name* :")]
         [Required]
         public string Name { get; set; }
 

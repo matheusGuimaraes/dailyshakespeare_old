@@ -72,8 +72,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
-    <Property Name="LastUpdatedBy_Id" Type="int" Nullable="false" />
+    <Property Name="ReferenceName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MonologueUser_Monologue_Id" Type="int" Nullable="false" />
     <Property Name="Character_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
@@ -100,8 +100,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Year" Type="int" Nullable="false" />
-    <Property Name="LastUpdatedOn" Type="datetime" Nullable="true" />
-    <Property Name="LastUpdatedBy_Id" Type="int" Nullable="false" />
+    <Property Name="PlayUser_Play_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Character">
     <Key>
@@ -110,10 +109,9 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Bio" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LastUpdatedOn" Type="datetime" Nullable="false" />
     <Property Name="Play_Id" Type="int" Nullable="false" />
     <Property Name="Gender_Id" Type="int" Nullable="false" />
-    <Property Name="LastUpdatedBy_Id" Type="int" Nullable="false" />
+    <Property Name="CharacterUser_Character_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Gender">
     <Key>
@@ -171,7 +169,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Monologue">
-        <PropertyRef Name="LastUpdatedBy_Id" />
+        <PropertyRef Name="MonologueUser_Monologue_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -231,7 +229,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Character">
-        <PropertyRef Name="LastUpdatedBy_Id" />
+        <PropertyRef Name="CharacterUser_Character_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -243,7 +241,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Play">
-        <PropertyRef Name="LastUpdatedBy_Id" />
+        <PropertyRef Name="PlayUser_Play_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -373,10 +371,9 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Content" Nullable="false" />
-          <NavigationProperty Name="LastUpdatedBy" Relationship="DailyShakespeare.MonologueUser" FromRole="Monologue" ToRole="User" />
           <NavigationProperty Name="EmotionalStates" Relationship="DailyShakespeare.MonologueEmotionalState" FromRole="Monologue" ToRole="EmotionalState" />
           <NavigationProperty Name="Character" Relationship="DailyShakespeare.MonologueCharacter" FromRole="Monologue" ToRole="Character" />
-          <Property Type="DateTime" Name="LastUpdatedOn" Nullable="false" />
+          <Property Type="String" Name="ReferenceName" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -408,8 +405,6 @@
           <NavigationProperty Name="Characters" Relationship="DailyShakespeare.PlayCharacter" FromRole="Play" ToRole="Character" />
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="Int32" Name="Year" Nullable="false" />
-          <Property Type="DateTime" Name="LastUpdatedOn" Nullable="true" />
-          <NavigationProperty Name="LastUpdatedBy" Relationship="DailyShakespeare.PlayUser" FromRole="Play" ToRole="User" />
         </EntityType>
         <Association Name="MonologueUser">
           <End Type="DailyShakespeare.Monologue" Role="Monologue" Multiplicity="*" />
@@ -429,8 +424,6 @@
           <NavigationProperty Name="Gender" Relationship="DailyShakespeare.GenderCharacter" FromRole="Character" ToRole="Gender" />
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Bio" Nullable="false" />
-          <Property Type="DateTime" Name="LastUpdatedOn" Nullable="false" />
-          <NavigationProperty Name="LastUpdatedBy" Relationship="DailyShakespeare.CharacterUser" FromRole="Character" ToRole="User" />
         </EntityType>
         <Association Name="PlayCharacter">
           <End Type="DailyShakespeare.Character" Role="Character" Multiplicity="*" />
@@ -523,7 +516,7 @@
         <MappingFragment StoreEntitySet="Monologue">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Content" ColumnName="Content" />
-          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
+          <ScalarProperty Name="ReferenceName" ColumnName="ReferenceName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -551,7 +544,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Year" ColumnName="Year" />
-          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -561,7 +553,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Bio" ColumnName="Bio" />
-          <ScalarProperty Name="LastUpdatedOn" ColumnName="LastUpdatedOn" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -609,7 +600,7 @@
     </EntitySetMapping>
     <AssociationSetMapping Name="MonologueUser" TypeName="DailyShakespeare.MonologueUser" StoreEntitySet="Monologue">
       <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="LastUpdatedBy_Id" />
+        <ScalarProperty Name="Id" ColumnName="MonologueUser_Monologue_Id" />
       </EndProperty>
       <EndProperty Name="Monologue">
         <ScalarProperty Name="Id" ColumnName="Id" />
@@ -657,7 +648,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="CharacterUser" TypeName="DailyShakespeare.CharacterUser" StoreEntitySet="Character">
       <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="LastUpdatedBy_Id" />
+        <ScalarProperty Name="Id" ColumnName="CharacterUser_Character_Id" />
       </EndProperty>
       <EndProperty Name="Character">
         <ScalarProperty Name="Id" ColumnName="Id" />
@@ -665,7 +656,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="PlayUser" TypeName="DailyShakespeare.PlayUser" StoreEntitySet="Play">
       <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="LastUpdatedBy_Id" />
+        <ScalarProperty Name="Id" ColumnName="PlayUser_Play_Id" />
       </EndProperty>
       <EndProperty Name="Play">
         <ScalarProperty Name="Id" ColumnName="Id" />
