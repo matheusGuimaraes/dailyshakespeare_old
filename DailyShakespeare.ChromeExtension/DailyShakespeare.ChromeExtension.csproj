@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>99b24dca-9b0f-487f-984d-70dfe1a5cac0</ProjectGuid>
+    <ProjectGuid>{0102F975-6F53-4362-8C26-58FC577CE6CA}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DailyShakespeare.ChromeExtension</RootNamespace>
@@ -32,7 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Content Include="icons\main - Copy %282%29.jpg" />
+    <Content Include="icons\main 16.jpg" />
+    <Content Include="icons\main 48.jpg" />
+    <Content Include="icons\main.jpg" />
+    <Content Include="popup.html" />
+    <Content Include="popup.js" />
+    <Content Include="screenshot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="manifest.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
