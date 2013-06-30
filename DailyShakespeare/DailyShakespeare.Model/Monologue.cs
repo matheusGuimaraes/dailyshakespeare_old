@@ -11,5 +11,6 @@ namespace DailyShakespeare.Model
         public List<EmotionalState> EmotionalStates { get; set; }
         public Character Character { get; set; }
         public DateTime LastUpdatedOn { get; set; }
+        public string ReferenceName { get; set; }
     }
 }

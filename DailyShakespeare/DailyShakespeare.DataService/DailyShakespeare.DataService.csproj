@@ -115,7 +115,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DailyShakespeare.DAL\DailyShakespeare.DAL.csproj">
+    <ProjectReference Include="..\DailyShakespeare.DAL\DailyShakespeare.DAL.csproj">
       <Project>{49f60956-0472-44c5-ada7-51108e265857}</Project>
       <Name>DailyShakespeare.DAL</Name>
     </ProjectReference>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<RoleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DailyShakespeare.DataService" version="1.8.31351.1533" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+<RoleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DailyShakespeare.DataService" version="2.0.6493.2" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
   <Startup>
     <Task commandLine="DiagnosticsAgent.exe" taskType="background" relativePath="plugins\Diagnostics">
       <Environment>
@@ -16,7 +16,7 @@
   </Startup>
   <Runtime>
     <EntryPoint>
-      <NetFxEntryPoint assemblyName="DailyShakespeare.DataService.dll" targetFrameworkVersion="v3.5" />
+      <NetFxEntryPoint assemblyName="DailyShakespeare.DataService.dll" targetFrameworkVersion="v4.0" />
     </EntryPoint>
   </Runtime>
   <ConfigurationSettings>

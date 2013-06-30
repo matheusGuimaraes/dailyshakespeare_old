@@ -50,7 +50,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DailyShakespeare.DAL\DailyShakespeare.DAL.csproj">
+    <ProjectReference Include="..\DailyShakespeare.DAL\DailyShakespeare.DAL.csproj">
       <Project>{49f60956-0472-44c5-ada7-51108e265857}</Project>
       <Name>DailyShakespeare.DAL</Name>
     </ProjectReference>

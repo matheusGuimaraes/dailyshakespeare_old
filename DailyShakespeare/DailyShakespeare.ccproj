@@ -37,14 +37,6 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="DailylShakespeare.Site\DailylShakespeare.Site.csproj">
-      <Name>DailylShakespeare.Site</Name>
-      <Project>{5b622d20-dc93-4a5b-ad47-864e975561e0}</Project>
-      <Private>True</Private>
-      <RoleType>Web</RoleType>
-      <RoleName>DailylShakespeare.Site</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
-    </ProjectReference>
     <ProjectReference Include="DailyShakespeare.DataService\DailyShakespeare.DataService.csproj">
       <Name>DailyShakespeare.DataService</Name>
       <Project>{bd1db6b0-be0e-405d-90a1-f6d4a9689135}</Project>
@@ -53,6 +45,26 @@
       <RoleName>DailyShakespeare.DataService</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
+    <ProjectReference Include="DailyShakespeare.WebSite\DailyShakespeare.WebSite.csproj">
+      <Name>DailyShakespeare.WebSite</Name>
+      <Project>{d06fa645-7053-46e0-b423-16c8c090507a}</Project>
+      <Private>True</Private>
+      <RoleType>Web</RoleType>
+      <RoleName>DailyShakespeare.WebSite</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DailyShakespeaare.WebSiteContent\" />
+    <Folder Include="DailyShakespeare.WebSiteContent\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DailyShakespeaare.WebSiteContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="DailyShakespeare.WebSiteContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
