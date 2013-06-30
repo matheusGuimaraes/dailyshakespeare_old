@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="DailyShakespeare.DataService.DailyShakespeareService" CodeBehind="DailyShakespeareService.svc.cs" %>
